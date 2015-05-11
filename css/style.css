@@ -1,0 +1,13 @@
+.container {
+  width: 680px;
+  height: 680px;
+  border: solid 2px black;
+  position: absolute;
+}
+
+.box {
+  width: 200px;
+  height: 200px;
+  border: solid 2px black;
+  display: inline-block;
+}
