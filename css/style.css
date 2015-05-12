@@ -1,13 +1,29 @@
+body {
+  background-color: #15B89A;
+}
+
 .container {
   width: 680px;
   height: 680px;
-  border: solid 2px black;
+  border: solid 10px black;
+  border-radius: 8px;
   position: absolute;
+  margin: auto;
+  top: 100px;
+  left: 300px;
+  vertical-align: middle;
+  display: inline-block;
+  background-color: #FF7373;
+  /*background-image: url(http://www.fillmurray.com/900/900);*/
+
 }
 
 .box {
+  border-radius: 8px;
   width: 200px;
   height: 200px;
-  border: solid 2px black;
+  border: solid 4px black;
   display: inline-block;
+  margin: auto;
+  background-color: #85DAEF;
 }
