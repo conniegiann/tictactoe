@@ -31,7 +31,8 @@ var checkForWinner = function() {
      state[3] == p && state[4] == p && state[5] == p || // Second row.
      state[6] == p && state[7] == p && state[8] == p) { // Third row.
 
-    alert('Player ' + p + ' has won, Yay!');
+    //alert('Player ' + p + ' has won, Yay!');
+    $('.result h2').text(p + ' has won the game!');
     return;
   }
 
@@ -40,7 +41,8 @@ var checkForWinner = function() {
      state[1] == p && state[4] == p && state[7] == p || // Second colum.
      state[2] == p && state[5] == p && state[8] == p) { // Third column.
 
-    alert('Player ' + p + ' has won, Yay!');
+    //alert('Player ' + p + ' has won, Yay!');
+    $('.result h2').text(p + ' has won the game!');  
     return;
   }
 
@@ -48,7 +50,8 @@ var checkForWinner = function() {
   if(state[0] == p && state[4] == p && state[8] == p || // Top left to bottom right.
      state[2] == p && state[4] == p && state[6] == p) { // Top right to bottom left.
 
-    alert('Player ' + p + ' has won, Yay!');
+    //alert('Player ' + p + ' has won, Yay!');
+    $('.result h2').text(p + ' has won the game!');
     return;
   }
 
@@ -63,7 +66,8 @@ var checkForWinner = function() {
   });
 
   if(emptySquares !== true) {
-    alert('There is a tie! The game ended. It was a draw.');
+    //alert('There is a tie! The game ended. It was a draw.');
+    $('.result h2').text('There is a tie! The game has ended. It was a draw.');
   };
 }
 
@@ -121,6 +125,7 @@ var reset = function() {
     $(this).attr('istaken', false);
     $(this).empty();
   });
+  $('.result h2').text('');
 }
 
 $('button').on('click', reset);
