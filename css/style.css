@@ -1,3 +1,5 @@
+@import url(http://fonts.googleapis.com/css?family=Lato:100,300);
+
 body {
   margin: 0px;
   padding: 0px;
@@ -5,15 +7,20 @@ body {
   background-color: #3F2B51;
 }
 
+.logo {
+  margin-top: 10px;
+  margin-left: -113px;
+}
+
 .container {
-  margin: 80px auto;
+  margin: 40px auto;
   vertical-align: top;
-  width: 682px;
+  width: 528px;
 }
 
 .board {
   margin: auto auto;
-  height: 680px;
+  height: 528px;
   border: solid 1px #15B89A;
   border-radius: 8px;
 }
@@ -21,40 +28,62 @@ body {
 .box {
   margin-left: 8px;
   margin-top: 10px;
-  width: 211px;
-  height: 211px;
+  width: 160px;
+  height: 160px;
   border: solid 1px #15B89A;
   border-radius: 8px;
   display: inline-block;
   vertical-align: top;
+  font-family: Lato, Verdana, Arial, Helvetica, sans-serif;
+  font-weight: 100;
+  text-align: center;
+}
+
+.box p {
+  font-size: 80px;
+  line-height: 0px;
 }
 
 button {
-  margin-top: 20px;
+  margin-top: 10px;
   margin-left: auto;
   margin-right: auto;
-  width: 680px;
-  height: 60px; 
+  width: 528px;
+  height: 30px;
   background-color: #3F2B51;
   border: solid 1px #15B89A;
   border-radius: 8px;
   color: #15B89A;
+  font-family: Lato, Verdana, Arial, Helvetica, sans-serif;
+  font-weight: 200;
+  font-size: 16px;
 }
 
-button:focus {outline:0;}
+button:focus {
+  outline: 0;
+}
 
-
+button:hover {
+  background-color: #15B89A;
+  color: #3F2B51;
+  font-family: Lato, Verdana, Arial, Helvetica, sans-serif;
+  font-weight: 200;
+  font-size: 16px;
+}
 
 .result {
-  margin-top: 20px;
+  margin-top: 10px;
   margin-left: auto;
   margin-right: auto;
-  width: 680px;
-  height: 60px; 
+  width: 528px;
+  height: 50px;
   background-color: #3F2B51;
   border: solid 1px #15B89A;
   border-radius: 8px;
   color: #15B89A;
-
+  font-family: Lato, Verdana, Arial, Helvetica, sans-serif;
+  font-weight: 100;
+  font-size: 12px;
+  text-align: center;
 }
 

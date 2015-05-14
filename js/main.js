@@ -1,4 +1,12 @@
 /*
+ ______  __  ______       ______  ______  ______       ______  ______  ______    
+/\__  _\/\ \/\  ___\     /\__  _\/\  __ \/\  ___\     /\__  _\/\  __ \/\  ___\   
+\/_/\ \/\ \ \ \ \____    \/_/\ \/\ \  __ \ \ \____    \/_/\ \/\ \ \/\ \ \  __\   
+   \ \_\ \ \_\ \_____\      \ \_\ \ \_\ \_\ \_____\      \ \_\ \ \_____\ \_____\ 
+    \/_/  \/_/\/_____/       \/_/  \/_/\/_/\/_____/       \/_/  \/_____/\/_____/ 
+*/
+
+/*
  * State: An array containing the current state of the game,
  * ie. whether a particular box has been chosen by a player or not.
  * Before a box has been chosen by either player, it's value is null,
@@ -6,9 +14,8 @@
  */
 var state = [null, null, null, null, null, null, null, null, null];
 
-/*
- * The Current player will be initially set to 'X'.
- */
+
+// The Current player will be initially set to 'X'.
 state.currentPlayer = 'X';
 
 /*
@@ -27,31 +34,31 @@ var checkForWinner = function() {
   var p = state.currentPlayer;
 
   // Check for a row.
-  if(state[0] == p && state[1] == p && state[2] == p || // First row.
-     state[3] == p && state[4] == p && state[5] == p || // Second row.
-     state[6] == p && state[7] == p && state[8] == p) { // Third row.
+  if (state[0] == p && state[1] == p && state[2] == p || // First row.
+    state[3] == p && state[4] == p && state[5] == p || // Second row.
+    state[6] == p && state[7] == p && state[8] == p) { // Third row.
 
-    //alert('Player ' + p + ' has won, Yay!');
-    $('.result h2').text(p + ' has won the game!');
+    $('.box').off('click', playerTurn);
+    $('.result h2').text(p + ' HAS WON THE GAME');
     return;
   }
 
   // Check for columns.
-  if(state[0] == p && state[3] == p && state[6] == p || // First column.
-     state[1] == p && state[4] == p && state[7] == p || // Second colum.
-     state[2] == p && state[5] == p && state[8] == p) { // Third column.
+  if (state[0] == p && state[3] == p && state[6] == p || // First column.
+    state[1] == p && state[4] == p && state[7] == p || // Second colum.
+    state[2] == p && state[5] == p && state[8] == p) { // Third column.
 
-    //alert('Player ' + p + ' has won, Yay!');
-    $('.result h2').text(p + ' has won the game!');  
+    $('.box').off('click', playerTurn);
+    $('.result h2').text(p + ' HAS WON THE GAME');
     return;
   }
 
   // Check for the two diagonals.
-  if(state[0] == p && state[4] == p && state[8] == p || // Top left to bottom right.
-     state[2] == p && state[4] == p && state[6] == p) { // Top right to bottom left.
+  if (state[0] == p && state[4] == p && state[8] == p || // Top left to bottom right.
+    state[2] == p && state[4] == p && state[6] == p) { // Top right to bottom left.
 
-    //alert('Player ' + p + ' has won, Yay!');
-    $('.result h2').text(p + ' has won the game!');
+    $('.box').off('click', playerTurn);
+    $('.result h2').text(p + ' HAS WON THE GAME');
     return;
   }
 
@@ -59,15 +66,15 @@ var checkForWinner = function() {
   var emptySquares = false;
 
   state.forEach(function(element) {
-    if(element === null) {
+    if (element === null) {
       emptySquares = true;
     }
     return;
   });
 
-  if(emptySquares !== true) {
-    //alert('There is a tie! The game ended. It was a draw.');
-    $('.result h2').text('There is a tie! The game has ended. It was a draw.');
+  if (emptySquares !== true) {
+    $('.box').off('click', playerTurn);
+    $('.result h2').text('THERE WAS A TIE. THE GAME HAS ENDED');
   };
 }
 
@@ -75,6 +82,8 @@ var checkForWinner = function() {
 /*
  * playerTurn is called when a player clicks on a square.
  */
+var playerDisplay;
+
 var playerTurn = function() {
 
   // Get a reference to the 'istaken' attribute of the HTML element that was clicked.
@@ -85,7 +94,7 @@ var playerTurn = function() {
 
     // Take the square for the current player,
     // by first displaying the 'X' or 'O' in the corresponding div.
-    $(this).append('<p>' + state.currentPlayer + '</p>');
+    $(this).html('<p>' + state.currentPlayer + '</p>');
 
     // Then change the elements 'istaken' attribute to true.
     $(this).attr('istaken', 'true');
@@ -105,7 +114,7 @@ var playerTurn = function() {
     // Switch the player for the next turn.
     state.switchPlayer();
 
-  // If the square was already taken by a player.
+    // If the square was already taken by a player.
   } else {
     console.log('Square %s was already taken by %s', $(this).attr('id'), state[$(this).attr('id')]);
   }
@@ -126,6 +135,8 @@ var reset = function() {
     $(this).empty();
   });
   $('.result h2').text('');
+  state.currentPlayer = 'X'
+  $('.box').on('click', playerTurn);
 }
 
 $('button').on('click', reset);
